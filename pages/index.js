@@ -25,6 +25,142 @@ const RCT_FLOWER_COLORS = [
   '#8fdfdf', '#a3efef', '#b7ffff', '#000000'
 ];
 
+// Color name mapping for user-friendly display
+const COLOR_NAMES = {
+  '#172323': 'Dark Teal',
+  '#233333': 'Charcoal Teal',
+  '#2f4343': 'Deep Gray-Green',
+  '#3f5353': 'Steel Gray',
+  '#4b6363': 'Slate Gray',
+  '#5b7373': 'Medium Gray',
+  '#6f8383': 'Light Gray-Blue',
+  '#537b7': 'Olive Green',
+  '#5b5b13': 'Dark Olive',
+  '#6b6b1f': 'Brown Olive',
+  '#777b2f': 'Army Green',
+  '#878b3b': 'Moss Green',
+  '#979b4f': 'Sage Green',
+  '#a7af5f': 'Light Olive',
+  '#777777': 'Medium Gray',
+  '#bcbc8b': 'Pale Yellow-Green',
+  '#9f9f3a3': 'Invalid Color',
+  '#432b07': 'Dark Brown',
+  '#573b0b': 'Chocolate Brown',
+  '#6f4b17': 'Saddle Brown',
+  '#7b571f': 'Raw Umber',
+  '#8f6327': 'Orange Brown',
+  '#9f7333': 'Light Brown',
+  '#b38343': 'Tan Brown',
+  '#bf9757': 'Light Tan',
+  '#cbaf6f': 'Beige',
+  '#e7dba3': 'Cream',
+  '#7fef3': 'Invalid Color',
+  '#471b00': 'Dark Maroon',
+  '#5f2b00': 'Deep Brown',
+  '#773300': 'Dark Orange',
+  '#8f5307': 'Burnt Orange',
+  '#a76f07': 'Golden Brown',
+  '#bf8b0f': 'Dark Gold',
+  '#cf9f1b': 'Gold',
+  '#e7b72f': 'Bright Gold',
+  '#ff5f': 'Invalid Color',
+  '#ff6f6f': 'Light Red',
+  '#ff7f3': 'Invalid Color',
+  '#230000': 'Very Dark Red',
+  '#4f0000': 'Dark Maroon',
+  '#5f0707': 'Deep Red',
+  '#6f0f0f': 'Dark Red',
+  '#7f1b1b': 'Crimson',
+  '#8f2727': 'Red',
+  '#9f3333': 'Bright Red',
+  '#af3f3f': 'Light Red',
+  '#cf6767': 'Rose Red',
+  '#df7777': 'Salmon Pink',
+  '#ef8787': 'Light Pink',
+  '#ff9f9f': 'Pale Pink',
+  '#176767': 'Dark Teal',
+  '#275757': 'Teal',
+  '#30527': 'Invalid Color',
+  '#476f2b': 'Forest Green',
+  '#577f33': 'Dark Green',
+  '#6f8f43': 'Olive Green',
+  '#7f9f4f': 'Green',
+  '#8faf5b': 'Light Green',
+  '#9fbf67': 'Lime Green',
+  '#afcf73': 'Pale Green',
+  '#cf8f4f': 'Orange Tan',
+  '#5b7f0': 'Invalid Color',
+  '#9f3f00': 'Red-Orange',
+  '#135300': 'Very Dark Green',
+  '#176700': 'Dark Forest Green',
+  '#1f7b00': 'Forest Green',
+  '#278f07': 'Green',
+  '#cfaf47': 'Yellow-Green',
+  '#8b7f3f': 'Olive',
+  '#7f6343': 'Brown',
+  '#ff5300': 'Bright Orange',
+  '#ff6300': 'Orange',
+  '#3fb06c': 'Sea Green',
+  '#cf53d': 'Invalid Color',
+  '#3f0f0f': 'Dark Red-Brown',
+  '#4b0f0b': 'Maroon',
+  '#53b07': 'Invalid Color',
+  '#4b60f73': 'Invalid Color',
+  '#53bf7f': 'Mint Green',
+  '#af6b3f': 'Brown Orange',
+  '#27b2f': 'Invalid Color',
+  '#272b2f': 'Dark Gray',
+  '#373b97': 'Blue-Purple',
+  '#5373f': 'Invalid Color',
+  '#733b3f': 'Dark Red-Brown',
+  '#833f6f': 'Purple-Brown',
+  '#c2b07f': 'Tan',
+  '#2af07': 'Invalid Color',
+  '#2b7b0f': 'Dark Green',
+  '#371b07': 'Very Dark Brown',
+  '#472f0f': 'Dark Brown',
+  '#5b3433': 'Red-Brown',
+  '#6b47f3': 'Blue-Purple',
+  '#7b5b74': 'Mauve',
+  '#8b6f8f': 'Purple-Gray',
+  '#9b7f8f': 'Light Purple',
+  '#ab8f9f': 'Lavender Gray',
+  '#bfa3b3': 'Dusty Rose',
+  '#cfb3c3': 'Light Mauve',
+  '#dfb3d3': 'Pink',
+  '#efc7e3': 'Pale Pink',
+  '#5fb33b': 'Bright Green',
+  '#63b39b': 'Teal Green',
+  '#77777f': 'Gray',
+  '#8b8b93': 'Light Gray',
+  '#a3a3a7': 'Silver Gray',
+  '#c7c7c3': 'Light Silver',
+  '#eeeee3': 'Off-White',
+  '#003f5f': 'Dark Blue',
+  '#1b2b8b': 'Blue',
+  '#273097': 'Royal Blue',
+  '#00534b': 'Dark Teal',
+  '#005f53': 'Teal',
+  '#005f57': 'Dark Cyan',
+  '#00635b': 'Cyan-Green',
+  '#007b7f': 'Cyan',
+  '#007f36': 'Teal Green',
+  '#249f93': 'Turquoise',
+  '#359f9f': 'Light Turquoise',
+  '#53afaf': 'Aqua',
+  '#67bfbf': 'Light Aqua',
+  '#7bcfcf': 'Pale Aqua',
+  '#8fdfdf': 'Very Light Aqua',
+  '#a3efef': 'Mint Aqua',
+  '#b7ffff': 'Pale Cyan',
+  '#000000': 'Black'
+};
+
+// Function to get color name
+function getColorName(hexColor) {
+  return COLOR_NAMES[hexColor] || hexColor;
+}
+
 // Color distance calculation
 function colorDistance(color1, color2) {
   const r1 = parseInt(color1.slice(1, 3), 16);
@@ -162,16 +298,18 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-green-900 bg-gradient-to-br from-green-800 to-green-900">
+    <div className="min-h-screen relative">
       <Head>
         <title>RCT Flower Pixel Art Converter</title>
         <meta name="description" content="Convert photos to pixel art using Roller Coaster Tycoon flower colors" />
       </Head>
-
-      <div className="container mx-auto px-4 py-8">
+      <Analytics />
+      {/* Main content with backdrop */}
+      <div className="relative bg-green-900 bg-opacity-85 min-h-screen">
+        <div className="container mx-auto px-4 py-8">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-yellow-300 mb-4">
-            RCT Flower Pixel Art Converter
+            🎢 RCT Flower Pixel Art Converter
           </h1>
           <p className="text-green-100 text-lg">
             Transform your photos into pixel art using the beautiful flower colors from Roller Coaster Tycoon!
@@ -279,10 +417,11 @@ export default function Home() {
                           key={colIndex}
                           className="w-8 h-8 border border-gray-600 relative group cursor-pointer"
                           style={{ backgroundColor: color }}
-                          title={`Position ${colIndex + 1}: ${color}`}
+                          title={`Position ${colIndex + 1}: ${getColorName(color)}`}
                         >
                           <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10">
-                            {color}
+                            {getColorName(color)}
+                            <div className="text-gray-400">{color}</div>
                           </div>
                         </div>
                       ))}
@@ -303,7 +442,10 @@ export default function Home() {
                                   className="w-4 h-4 border border-gray-400"
                                   style={{ backgroundColor: uniqueColor }}
                                 ></div>
-                                <span>{uniqueColor}</span>
+                                <div className="flex flex-col">
+                                  <span className="text-white font-medium">{getColorName(uniqueColor)}</span>
+                                  <span className="text-gray-300 text-xs">{uniqueColor}</span>
+                                </div>
                                 <span className="text-yellow-300">×{count}</span>
                               </div>
                             );
@@ -337,6 +479,7 @@ export default function Home() {
           <p>Using the authentic flower color palette from RollerCoaster Tycoon 🌺</p>
         </div>
       </div>
+    </div>
     </div>
   );
 }
