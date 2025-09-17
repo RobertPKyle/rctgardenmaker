@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
     "scripts": {
-    "build": "next.js build --output public"
+    "build": "npm build --output public"
   },
   "dependencies": {
     "next": "14.0.0",
