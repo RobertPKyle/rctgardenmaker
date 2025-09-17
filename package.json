@@ -7,9 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
-  },
-    "scripts": {
-    "build": "npm build --output public"
+  }, "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
     "next": "14.0.0",
