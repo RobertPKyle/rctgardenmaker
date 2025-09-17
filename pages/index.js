@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import Head from 'next/head';
+import { Analytics } from "@vercel/analytics/next"
 
 // RCT Flower color palette extracted from the image
 const RCT_FLOWER_COLORS = [
